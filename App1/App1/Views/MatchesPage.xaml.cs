@@ -21,7 +21,7 @@ namespace App1.Views
 
         TeamsViewmodel viewModel;
 
-
+        int CurrentPage = 1;
 
         public MatchesPage ()
 		{
@@ -34,27 +34,11 @@ namespace App1.Views
             BindingContext = new TeamsViewmodel(teams);
         }
 
-        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
-        {
-            Team team = args.SelectedItem as Team;
-            if (team == null)
-                return;
-
-            //await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
-
-            //// Manually deselect item.
-            //ItemsListView.SelectedItem = null;
-        }
-
-
-        async void AddItem_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
-        }
 
         async void OnButtonClicked(object sender, EventArgs args)
-        {
-            teams = (Task.Run(() => httpService.GetTeams(2)).Result);
+        {            
+            CurrentPage++;
+            teams = (Task.Run(() => httpService.GetTeams(CurrentPage)).Result);
             myList.ItemsSource = teams;
         }
     }
