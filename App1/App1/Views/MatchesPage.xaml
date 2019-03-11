@@ -7,7 +7,7 @@
     <StackLayout>
 
 
-            <ListView x:Name="myList">
+            <ListView x:Name="TeamList">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -21,6 +21,7 @@
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
                             <!--<Image Source="{Binding image_url}" HeightRequest="50"/>-->
+                            
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

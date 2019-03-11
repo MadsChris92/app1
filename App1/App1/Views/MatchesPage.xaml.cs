@@ -31,7 +31,7 @@ namespace App1.Views
 
             obsTeams = new ObservableCollection<Team>((Task.Run(() => httpService.GetTeams(1)).Result));
 
-            myList.ItemsSource = obsTeams;
+            TeamList.ItemsSource = obsTeams;
 
             BindingContext = new TeamsViewmodel(teams);
         }
