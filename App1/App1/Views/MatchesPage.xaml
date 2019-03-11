@@ -8,24 +8,24 @@
 
 
             <ListView x:Name="myList">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout HeightRequest="50">
-                                <Label Text="{Binding name}" 
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout HeightRequest="50">
+                            <Label Text="{Binding name}" 
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="16" />
-                                <Label Text="{Binding slug}" 
+                            <Label Text="{Binding slug}" 
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
-                                <!--<Image Source="{Binding image_url}" HeightRequest="50"/>-->
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                            <!--<Image Source="{Binding image_url}" HeightRequest="50"/>-->
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
         <StackLayout>
             <Button Clicked="OnButtonClicked" Text="{Binding Title}"/>

@@ -22,9 +22,8 @@ namespace App1.Services
         {
             var teams = new List<Team>();
 
-            var uri = $"{url}?page={num}&token={Key}";
-                //https://api.pandascore.co/csgo/teams?token=PUbBYoQNl8UBcjZ0nvOHSPbJEGMEHtV75-437VksZ2bsKdNOb34";
-              //new Uri(string.Format(Teams, Key));
+            var uri = $"{url}?page={num}&sort=name&token={Key}";
+                //https://api.pandascore.co/csgo/teams?page=1&sort=name&token=PUbBYoQNl8UBcjZ0nvOHSPbJEGMEHtV75-437VksZ2bsKdNOb34";
 
             var response = await Client.GetAsync(uri);
 
