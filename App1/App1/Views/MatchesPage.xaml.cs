@@ -21,19 +21,50 @@ namespace App1.Views
 
         ObservableCollection<Team> obsTeams;
 
-        TeamsViewmodel viewModel;
-
-        int CurrentPage = 1;
+        private Team oldTeam = null;
+        private int CurrentPage = 1;
 
         public MatchesPage ()
 		{
 			InitializeComponent ();
 
             obsTeams = new ObservableCollection<Team>((Task.Run(() => httpService.GetTeams(1)).Result));
-
             TeamList.ItemsSource = obsTeams;
+        }
 
-            BindingContext = new TeamsViewmodel(teams);
+        private void ListViewItem_Tabbed(object sender, ItemTappedEventArgs e)
+        {
+            var team = e.Item as Team;
+
+            if(team != oldTeam)
+            {
+                if(oldTeam != null)
+                {
+                    oldTeam.IsVisible = false;
+                    team.IsVisible = true;                 
+                    UpdateTeams(oldTeam);
+                    oldTeam = team;
+                }
+                else
+                {
+                    team.IsVisible = true;
+                    oldTeam = team;
+                }
+                
+            }else if (team == oldTeam)
+            {
+                oldTeam = null; 
+                team.IsVisible = false;
+            }
+
+            UpdateTeams(team);
+        }
+
+        private void UpdateTeams(Team team)
+        {
+            var Index = obsTeams.IndexOf(team);
+            obsTeams.Remove(team);
+            obsTeams.Insert(Index, team);
         }
 
 
@@ -46,7 +77,6 @@ namespace App1.Views
             {
                 obsTeams.Add(item);
             }
-            //myList.ItemsSource = obsTeams;
         }
     }
 }

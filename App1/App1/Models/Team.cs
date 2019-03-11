@@ -15,12 +15,14 @@ namespace App1.Models
         public int id { get; set; }
 
         public List<Player> players { get; set; }
+
         public string image_url { get; set; }
 
-        
+        public bool IsVisible { get; set; }
 
         public Team()
         {
+            IsVisible = false;
         }
     }
 }

@@ -3,25 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App1.Views.MatchesPage">
 
-    
+
     <StackLayout>
-
-
-            <ListView x:Name="TeamList">
+        <ListView x:Name="TeamList" ItemsSource="obsTeams" ItemTapped="ListViewItem_Tabbed">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout HeightRequest="50">
+                        <StackLayout>
                             <Label Text="{Binding name}" 
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="16" />
-                            <Label Text="{Binding slug}" 
+                            <!--<Label Text="{Binding slug}" 
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="13" />
+                                FontSize="13" />-->
                             <!--<Image Source="{Binding image_url}" HeightRequest="50"/>-->
-                            
+
+                            <StackLayout IsVisible="{Binding IsVisible}" HeightRequest="100">
+                                <Label Text="Players" FontSize="13"/>
+                                <ListView ItemsSource="{Binding players}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Padding="5">
+                                                    <Label Text="{Binding name}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="10"/>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
@@ -29,7 +41,7 @@
         </ListView>
 
         <StackLayout>
-            <Button Clicked="OnButtonClicked" Text="{Binding Title}"/>
+            <Button Clicked="OnButtonClicked" Text="Load More"/>
         </StackLayout>
 
     </StackLayout>
