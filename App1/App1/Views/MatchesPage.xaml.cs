@@ -19,6 +19,8 @@ namespace App1.Views
 
         List<Team> teams = new List<Team>();
 
+        ObservableCollection<Team> obsTeams;
+
         TeamsViewmodel viewModel;
 
         int CurrentPage = 1;
@@ -27,9 +29,9 @@ namespace App1.Views
 		{
 			InitializeComponent ();
 
-            teams = (Task.Run(() => httpService.GetTeams(1)).Result);
+            obsTeams = new ObservableCollection<Team>((Task.Run(() => httpService.GetTeams(1)).Result));
 
-            myList.ItemsSource = teams;
+            myList.ItemsSource = obsTeams;
 
             BindingContext = new TeamsViewmodel(teams);
         }
@@ -38,8 +40,13 @@ namespace App1.Views
         async void OnButtonClicked(object sender, EventArgs args)
         {            
             CurrentPage++;
-            teams = (Task.Run(() => httpService.GetTeams(CurrentPage)).Result);
-            myList.ItemsSource = teams;
+            teams = ((Task.Run(() => httpService.GetTeams(CurrentPage)).Result));
+
+            foreach (var item in teams)
+            {
+                obsTeams.Add(item);
+            }
+            //myList.ItemsSource = obsTeams;
         }
     }
 }
