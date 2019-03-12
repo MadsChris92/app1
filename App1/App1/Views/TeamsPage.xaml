@@ -20,19 +20,23 @@
                                 FontSize="13" />-->
                             <!--<Image Source="{Binding image_url}" HeightRequest="50"/>-->
 
-                            <StackLayout IsVisible="{Binding IsVisible}" HeightRequest="100">
-                                <Label Text="Players" FontSize="13"/>
-                                <ListView ItemsSource="{Binding players}">
+                            <StackLayout IsVisible="{Binding IsVisible}"  
+                                         HeightRequest="250">
+                                <ListView ItemsSource="{Binding players}" 
+                                          ItemTapped="PlayerItem_Tapped">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
                                                 <StackLayout Padding="5">
-                                                    <Label Text="{Binding name}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="10"/>
+                                                    <Label Text="{Binding name}" 
+                                                           TextColor="Blue"/>
                                                 </StackLayout>
                                             </ViewCell>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
+                                <Button Text="dasda"
+                                        Clicked="Btn_Click_Show_Team"/>
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>
@@ -41,7 +45,7 @@
         </ListView>
 
         <StackLayout>
-            <Button Clicked="OnButtonClicked" Text="Load More"/>
+            <Button Clicked="Btn_Click_Load" Text="Load More"/>
         </StackLayout>
 
     </StackLayout>

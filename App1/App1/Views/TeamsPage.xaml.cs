@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,6 +21,7 @@ namespace App1.Views
         List<Team> teams = new List<Team>();
 
         ObservableCollection<Team> obsTeams;
+        public ICommand NavigateCommand { private set; get; }
 
         private Team oldTeam = null;
         private int CurrentPage = 1;
@@ -60,6 +62,16 @@ namespace App1.Views
             UpdateTeams(team);
         }
 
+
+        private void PlayerItem_Tapped(object sender, ItemTappedEventArgs e)
+        {
+            var player = e.Item as Player;
+
+
+        }
+
+
+
         private void UpdateTeams(Team team)
         {
             var Index = obsTeams.IndexOf(team);
@@ -68,7 +80,7 @@ namespace App1.Views
         }
 
 
-        async void OnButtonClicked(object sender, EventArgs args)
+        async void Btn_Click_Load(object sender, EventArgs args)
         {            
             CurrentPage++;
             teams = ((Task.Run(() => httpService.GetTeams(CurrentPage)).Result));
@@ -77,6 +89,14 @@ namespace App1.Views
             {
                 obsTeams.Add(item);
             }
+        }
+
+        async void Btn_Click_Show_Team(object sender, EventArgs args)
+        {
+            if (oldTeam == null)
+                return;
+
+            await Navigation.PushAsync(new TeamDetailPage());
         }
     }
 }
