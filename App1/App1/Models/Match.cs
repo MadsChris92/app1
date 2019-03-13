@@ -4,7 +4,7 @@ using System.Text;
 
 namespace App1.Models
 {
-    class Match
+    public class Match
     {
         public int winner_id { get; set; }
 

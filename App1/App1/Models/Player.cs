@@ -4,7 +4,7 @@ using System.Text;
 
 namespace App1.Models
 {
-    class Player
+    public class Player
     {
         public string slug { get; set; }
 
@@ -20,6 +20,26 @@ namespace App1.Models
 
         public string first_name { get; set; }
 
+        //public string image_url { get; set; }
+        private string image_default { get; set; }
 
+        public string image_url
+        {
+            get
+            {
+                return image_default;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    image_default = value;
+                }
+                else
+                {
+                    image_default = "Ressources/player.png";
+                }
+            }
+        }
     }
 }

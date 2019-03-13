@@ -6,7 +6,7 @@ using System.Text;
 
 namespace App1.Models
 {
-    class Team
+    public class Team
     {
         public string slug { get; set; }
 

@@ -96,7 +96,7 @@ namespace App1.Views
             if (oldTeam == null)
                 return;
 
-            await Navigation.PushAsync(new TeamDetailPage());
+            await Navigation.PushAsync(new TeamDetailPage(oldTeam));
         }
     }
 }

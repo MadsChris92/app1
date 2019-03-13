@@ -7,7 +7,7 @@ namespace App1.ViewModels
 {
     class TeamDetailViewModel : BaseViewModel
     {
-        Team team { get; set; }
+        public Team team { get; set; }
 
         public TeamDetailViewModel(Team team)
         {

@@ -20,7 +20,7 @@ namespace App1.Views
             {
                 new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" },
-                new HomeMenuItem {Id = MenuItemType.Matches, Title="Matches"}
+                new HomeMenuItem {Id = MenuItemType.Matches, Title="Teams"}
             };
 
             ListViewMenu.ItemsSource = menuItems;
