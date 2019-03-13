@@ -37,7 +37,8 @@ namespace App1.Models
                 }
                 else
                 {
-                    image_default = "Ressources/player.png";
+                    image_default = @"..\Ressources\player.png";
+                    //"Ressources/player.png";
                 }
             }
         }

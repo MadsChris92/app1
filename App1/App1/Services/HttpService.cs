@@ -23,15 +23,24 @@ namespace App1.Services
             var teams = new List<Team>();
 
             var uri = $"{url}?page={num}&sort=name&token={Key}";
-                //https://api.pandascore.co/csgo/teams?page=1&sort=name&token=PUbBYoQNl8UBcjZ0nvOHSPbJEGMEHtV75-437VksZ2bsKdNOb34";
-
+               
             var response = await Client.GetAsync(uri);
-
-            
+          
             var content = await response.Content.ReadAsStringAsync();
             teams = JsonConvert.DeserializeObject<List<Team>>(content);
             return teams;    
+        }
 
+        public async Task<List<Match>> GetMatches(int num)
+        {
+            var matches = new List<Match>();
+            var uri = $"https://api.pandascore.co/csgo/matches/upcoming?page={num}&token={Key}";
+
+            var response = await Client.GetAsync(uri);
+
+            var content = await response.Content.ReadAsStringAsync();
+            matches = JsonConvert.DeserializeObject<List<Match>>(content);
+            return matches;
         }
     }
 }
