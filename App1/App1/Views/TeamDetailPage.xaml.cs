@@ -15,11 +15,9 @@ namespace App1.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class TeamDetailPage : ContentPage
 	{
-        public ObservableCollection<Match> obsMatches;
+        private ObservableCollection<Match> obsMatches;
         private HttpService httpService = new HttpService();
-
-        public Team team;
-
+        private Team team;
         private int currentUpcommingPage = 1;
 
         public TeamDetailPage (Team team)
@@ -27,7 +25,7 @@ namespace App1.Views
             this.team = team;
 			InitializeComponent ();
             obsMatches = new ObservableCollection<Match>((Task.Run(() =>
-                httpService.GetMatches(currentUpcommingPage)).Result));
+                httpService.GetMatches(currentUpcommingPage, team)).Result));
 
             BindingContext = new TeamDetailViewModel(team, obsMatches);
 

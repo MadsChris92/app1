@@ -10,6 +10,8 @@ namespace App1.Models
 
         public string status { get; set; }
 
+        public List<Team> opponents { get; set; }
+
 
 
     }

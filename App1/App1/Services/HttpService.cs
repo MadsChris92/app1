@@ -31,8 +31,9 @@ namespace App1.Services
             return teams;    
         }
 
-        public async Task<List<Match>> GetMatches(int num)
+        public async Task<List<Match>> GetMatches(int num, Team team)
         {
+            
             var matches = new List<Match>();
             var uri = $"https://api.pandascore.co/csgo/matches/upcoming?page={num}&token={Key}";
 
@@ -40,7 +41,9 @@ namespace App1.Services
 
             var content = await response.Content.ReadAsStringAsync();
             matches = JsonConvert.DeserializeObject<List<Match>>(content);
-            return matches;
+            
+
+            return matches.FindAll(x => x.opponents.Exists(t => t.id == team.id) == true);
         }
     }
 }
