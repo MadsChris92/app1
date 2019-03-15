@@ -5,29 +5,29 @@
 
 
     <StackLayout>
-        <ListView x:Name="TeamList" ItemsSource="obsTeams" ItemTapped="ListViewItem_Tabbed">
+        <ListView x:Name="TeamList" 
+                  ItemsSource="obsTeams" 
+                  ItemTapped="ListViewItem_Tabbed"
+                  VerticalOptions="FillAndExpand" 
+                  HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <!--Team list-->
                         <StackLayout>
-                            <Label Text="{Binding name}" 
-                                LineBreakMode="NoWrap" 
-                                Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="16" />
-                            <!--<Label Text="{Binding slug}" 
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="13" />-->
-                            <!--<Image Source="{Binding image_url}" HeightRequest="50"/>-->
-
-                            <StackLayout IsVisible="{Binding IsVisible}"  
-                                         HeightRequest="250">
+                            <Label Text="{Binding name}" />
+                            
+                            <!--Unfolding player list-->
+                            <StackLayout IsVisible="{Binding IsVisible}">
                                 <ListView ItemsSource="{Binding players}" 
-                                          ItemTapped="PlayerItem_Tapped">
+                                          ItemTapped="PlayerItem_Tapped"
+                                          HasUnevenRows="True"
+                                          VerticalOptions="FillAndExpand"
+                                          HeightRequest="100">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
-                                                <StackLayout Padding="5">
+                                                <StackLayout>
                                                     <Label Text="{Binding name}" 
                                                            TextColor="Blue"/>
                                                 </StackLayout>
@@ -35,8 +35,12 @@
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
                                 </ListView>
-                                <Button Text="dasda"
-                                        Clicked="Btn_Click_Show_Team"/>
+                                
+                                
+                                <Button Text="View more"
+                                        
+                                        Clicked="Btn_Click_Show_Team"
+                                        BackgroundColor="Transparent"/>
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>

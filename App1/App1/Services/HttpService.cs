@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,19 +32,29 @@ namespace App1.Services
             return teams;    
         }
 
-        public async Task<List<Match>> GetMatches(int num, Team team)
+        public async Task<List<Match>> GetUpcommingMatchesFromOpponents(int num, Team team)
         {
             
+            var opponents = new List<Opponent>();
             var matches = new List<Match>();
+            var returnMatches = new List<Match>();
             var uri = $"https://api.pandascore.co/csgo/matches/upcoming?page={num}&token={Key}";
 
             var response = await Client.GetAsync(uri);
-
             var content = await response.Content.ReadAsStringAsync();
             matches = JsonConvert.DeserializeObject<List<Match>>(content);
-            
 
-            return matches.FindAll(x => x.opponents.Exists(t => t.id == team.id) == true);
+            foreach(var m in matches)
+            {              
+                foreach(var tss in m.opponents.Select(t => t.opponent))
+                {
+                    if(tss.id == team.id)
+                    {
+                        returnMatches.Add(m);
+                    }
+                }
+            }
+            return returnMatches;
         }
     }
 }

@@ -25,7 +25,7 @@ namespace App1.Views
             this.team = team;
 			InitializeComponent ();
             obsMatches = new ObservableCollection<Match>((Task.Run(() =>
-                httpService.GetMatches(currentUpcommingPage, team)).Result));
+                httpService.GetUpcommingMatchesFromOpponents(currentUpcommingPage, team)).Result));
 
             BindingContext = new TeamDetailViewModel(team, obsMatches);
 
