@@ -43,14 +43,17 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                    
+                    
+                <!--Upcomming matches-->
+                <Label Text="Upcomming matches"
+                       HorizontalOptions="Center"
+                       Font="Medium"/>
 
-                    <Label Text="Upcomming matches"
-                   HorizontalOptions="Center"
-                   Font="Medium"/>
 
-                    <!--Upcomming matches-->
                 </StackLayout>
-                <ListView ItemsSource="{Binding obsMatches}">
+                <ListView ItemsSource="{Binding upMatches}"
+                          HeightRequest="300">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -82,8 +85,81 @@
                 </ListView>
                 
                 <!--Put results here-->
+                <Label Text="Recent results"
+                           HorizontalOptions="Center"
+                           Font="Medium"/>
                 
+                <ListView ItemsSource="{Binding results}"
+                          HeightRequest="300">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0" 
+                                           Grid.Column="0"
+                                           Text="{Binding name}"/>
+                                    <Label Grid.Row="1" 
+                                           Grid.Column="0" 
+                                           Text="{Binding begin_at}"/>
+                                    <Label Grid.Row="1" 
+                                           Grid.Column="1" 
+                                           Text="{Binding match_type}"/>
+                                    <Label Grid.Row="1" 
+                                           Grid.Column="2"
+                                           HeightRequest="50"
+                                           HorizontalOptions="End"
+                                           Text="{Binding number_of_games}"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
                 
+                <!--running matches-->
+                <Label Text="Running matches"
+                           HorizontalOptions="Center"
+                           Font="Medium"/>
+
+                <ListView ItemsSource="{Binding runMatches}"
+                          HeightRequest="300">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0" 
+                                           Grid.Column="0"
+                                           Text="{Binding name}"/>
+                                    <Label Grid.Row="1" 
+                                           Grid.Column="0" 
+                                           Text="{Binding begin_at}"/>
+                                    <Label Grid.Row="1" 
+                                           Grid.Column="1" 
+                                           Text="{Binding match_type}"/>
+                                    <Label Grid.Row="1" 
+                                           Grid.Column="2"
+                                           HeightRequest="50"
+                                           HorizontalOptions="End"
+                                           Text="{Binding number_of_games}"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+
             </StackLayout>
 
         </ScrollView>

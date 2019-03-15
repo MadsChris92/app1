@@ -32,7 +32,7 @@ namespace App1.Services
             return teams;    
         }
 
-        public async Task<List<Match>> GetUpcommingMatchesFromOpponents(int num, Team team)
+        public async Task<List<Match>> GetTeamUpcommingMatches(int num, Team team)
         {
             
             var opponents = new List<Opponent>();
@@ -56,5 +56,58 @@ namespace App1.Services
             }
             return returnMatches;
         }
+
+        public async Task<List<Match>> GetTeamResults(int num, Team team)
+        {
+
+            var opponents = new List<Opponent>();
+            var matches = new List<Match>();
+            var returnMatches = new List<Match>();
+            var uri = $"https://api.pandascore.co/csgo/matches/past?page={num}&token={Key}";
+
+            var response = await Client.GetAsync(uri);
+            var content = await response.Content.ReadAsStringAsync();
+            matches = JsonConvert.DeserializeObject<List<Match>>(content);
+
+            foreach (var m in matches)
+            {
+                foreach (var tss in m.opponents.Select(t => t.opponent))
+                {
+                    if (tss.id == team.id)
+                    {
+                        returnMatches.Add(m);
+                    }
+                }
+            }
+            return returnMatches;
+        }
+
+        public async Task<List<Match>> GetTeamRunningMatches(int num, Team team)
+        {
+
+            var opponents = new List<Opponent>();
+            var matches = new List<Match>();
+            var returnMatches = new List<Match>();
+            var uri = $"https://api.pandascore.co/csgo/matches/running?page={num}&token={Key}";
+
+            var response = await Client.GetAsync(uri);
+            var content = await response.Content.ReadAsStringAsync();
+            matches = JsonConvert.DeserializeObject<List<Match>>(content);
+
+            foreach (var m in matches)
+            {
+                foreach (var tss in m.opponents.Select(t => t.opponent))
+                {
+                    if (tss.id == team.id)
+                    {
+                        returnMatches.Add(m);
+                    }
+                }
+            }
+            return returnMatches;
+        }
+
+
+
     }
 }

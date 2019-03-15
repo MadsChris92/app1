@@ -9,11 +9,19 @@ namespace App1.ViewModels
     class TeamDetailViewModel : BaseViewModel
     {
         public Team team { get; set; }
-        public ObservableCollection<Match> obsMatches { get; set; }
+        public ObservableCollection<Match> upMatches { get; set; }
+        public ObservableCollection<Match> results { get; set; }
+        public ObservableCollection<Match> runMatches { get; set; }
 
-        public TeamDetailViewModel(Team team, ObservableCollection<Match> obsMatches)
+        public TeamDetailViewModel(Team team, 
+            ObservableCollection<Match> upMatches, 
+            ObservableCollection<Match> results,
+            ObservableCollection<Match> runMatches)
         {
-            this.obsMatches = obsMatches;
+            this.upMatches = upMatches;
+            this.results = results;
+            this.runMatches = runMatches;
+
             this.team = team;
         }
     }
