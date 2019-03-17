@@ -37,6 +37,34 @@ namespace App1.Views
                 httpService.GetTeamRunningMatches(currentUpcommingPage, team)).Result));
 
             BindingContext = new TeamDetailViewModel(team, upMatches, results, runMatches);
+
+            UISetup();
+        }
+
+        public void UISetup()
+        {
+
+            if (team.players.Count == 0)
+                playerList.IsVisible = false;
+            else
+                playerLabel.IsVisible = false;
+
+            if (upMatches.Count == 0)
+                upList.IsVisible = false;
+            else
+                upLabel.IsVisible = false;
+
+            if (results.Count == 0)
+                resList.IsVisible = false;
+            else
+                resLabel.IsVisible = false;
+
+            if (runMatches.Count == 0)
+                runList.IsVisible = false;
+            else
+                runLabel.IsVisible = false;
+
+
         }
     }
 }

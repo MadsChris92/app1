@@ -13,7 +13,8 @@
                     
                     <!--Players-->
                     <ListView ItemsSource="{Binding players}"
-                              HeightRequest="300">
+                              HeightRequest="300"
+                              x:Name="playerList">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -43,9 +44,14 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    
-                    
-                <!--Upcomming matches-->
+
+                    <Label x:Name="playerLabel"
+                           IsVisible="{Binding teamNull}" 
+                           Text="no players registered"
+                           HorizontalOptions="Center"/>
+
+
+                    <!--Upcomming matches-->
                 <Label Text="Upcomming matches"
                        HorizontalOptions="Center"
                        Font="Medium"/>
@@ -53,7 +59,8 @@
 
                 </StackLayout>
                 <ListView ItemsSource="{Binding upMatches}"
-                          HeightRequest="300">
+                          HeightRequest="300"
+                          x:Name="upList">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -83,14 +90,19 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                
+
+                <Label x:Name="upLabel"
+                       Text="no upcommming matches"
+                       HorizontalOptions="Center"/>
+
                 <!--Put results here-->
                 <Label Text="Recent results"
                            HorizontalOptions="Center"
                            Font="Medium"/>
                 
                 <ListView ItemsSource="{Binding results}"
-                          HeightRequest="300">
+                          HeightRequest="300"
+                          x:Name="resList">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -120,14 +132,20 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                
+
+
+                <Label x:Name="resLabel"
+                       Text="no recent results"
+                       HorizontalOptions="Center"/>
+
                 <!--running matches-->
                 <Label Text="Running matches"
-                           HorizontalOptions="Center"
-                           Font="Medium"/>
+                       HorizontalOptions="Center"
+                       Font="Medium"/>
 
                 <ListView ItemsSource="{Binding runMatches}"
-                          HeightRequest="300">
+                          HeightRequest="300"
+                          x:Name="runList">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -158,6 +176,9 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
+                <Label x:Name="runLabel"
+                       Text="no recent results"
+                       HorizontalOptions="Center"/>
 
 
             </StackLayout>

@@ -21,7 +21,6 @@ namespace App1.Views
         List<Team> teams = new List<Team>();
 
         ObservableCollection<Team> obsTeams;
-        public ICommand NavigateCommand { private set; get; }
 
         private Team oldTeam = null;
         private int CurrentPage = 1;

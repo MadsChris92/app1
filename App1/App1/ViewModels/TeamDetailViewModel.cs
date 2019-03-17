@@ -13,6 +13,8 @@ namespace App1.ViewModels
         public ObservableCollection<Match> results { get; set; }
         public ObservableCollection<Match> runMatches { get; set; }
 
+        public bool teamNull { get; set; }
+
         public TeamDetailViewModel(Team team, 
             ObservableCollection<Match> upMatches, 
             ObservableCollection<Match> results,
@@ -23,6 +25,14 @@ namespace App1.ViewModels
             this.runMatches = runMatches;
 
             this.team = team;
+
+            if(team.players.Count > 0)
+            {
+                
+            }else
+            {
+                teamNull = false;
+            }
         }
     }
 }

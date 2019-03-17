@@ -84,7 +84,6 @@ namespace App1.Services
 
         public async Task<List<Match>> GetTeamRunningMatches(int num, Team team)
         {
-
             var opponents = new List<Opponent>();
             var matches = new List<Match>();
             var returnMatches = new List<Match>();

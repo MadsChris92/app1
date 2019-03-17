@@ -16,7 +16,7 @@ namespace App1.Models
 
         public DateTime begin_at { get; set; }
 
-        public int number_of_games { get; set; }
+        public int? number_of_games { get; set; }
 
         public string name { get; set; }
 
