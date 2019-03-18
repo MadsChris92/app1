@@ -14,11 +14,13 @@ namespace App1.Services
         HttpClient Client { get; set; }
         string Key = "PUbBYoQNl8UBcjZ0nvOHSPbJEGMEHtV75-437VksZ2bsKdNOb34";
         string url = "https://api.pandascore.co/csgo/teams";
+
         public HttpService()
         {
             Client = new HttpClient();
             Client.MaxResponseContentBufferSize = 256000;
         }
+
         public async Task<List<Team>> GetTeams(int num)
         {
             var teams = new List<Team>();

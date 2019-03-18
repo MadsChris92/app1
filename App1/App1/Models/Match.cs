@@ -22,5 +22,7 @@ namespace App1.Models
 
         public string match_type { get; set; }
 
+        public Team winner { get; set; }
+
     }
 }

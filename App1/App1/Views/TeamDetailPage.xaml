@@ -177,7 +177,7 @@
                 </ListView>
 
                 <Label x:Name="runLabel"
-                       Text="no recent results"
+                       Text="no running matches"
                        HorizontalOptions="Center"/>
 
 
