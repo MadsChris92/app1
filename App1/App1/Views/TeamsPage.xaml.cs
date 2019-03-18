@@ -62,11 +62,11 @@ namespace App1.Views
         }
 
 
-        private void PlayerItem_Tapped(object sender, ItemTappedEventArgs e)
+        async void PlayerItem_Tapped(object sender, ItemTappedEventArgs e)
         {
             var player = e.Item as Player;
 
-
+            await Navigation.PushAsync(new PlayerDetailPage(player));
         }
 
 

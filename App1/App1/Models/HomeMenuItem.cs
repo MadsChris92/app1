@@ -7,7 +7,6 @@ namespace App1.Models
     public enum MenuItemType
     {
         Browse,
-        About,
         Matches
     }
     public class HomeMenuItem

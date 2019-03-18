@@ -50,14 +50,14 @@
                            Text="no players registered"
                            HorizontalOptions="Center"/>
 
-
-                    <!--Upcomming matches-->
+                    
+                </StackLayout>
+                
+                <!--Upcomming matches-->
                 <Label Text="Upcomming matches"
                        HorizontalOptions="Center"
                        Font="Medium"/>
 
-
-                </StackLayout>
                 <ListView ItemsSource="{Binding upMatches}"
                           HeightRequest="300"
                           x:Name="upList">
@@ -132,7 +132,6 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-
 
                 <Label x:Name="resLabel"
                        Text="no recent results"
