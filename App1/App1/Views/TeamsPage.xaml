@@ -12,11 +12,12 @@
                   HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
+                    
                     <ViewCell>
                         <!--Team list-->
-                        <StackLayout>
-                            <Label Text="{Binding name}" />
-                            
+                        <StackLayout Padding="5">
+                            <Label Text="{Binding name}"  FontAttributes="Bold"/>
+
                             <!--Unfolding player list-->
                             <StackLayout IsVisible="{Binding IsVisible}">
                                 <ListView ItemsSource="{Binding players}" 
@@ -26,31 +27,39 @@
                                           HeightRequest="100">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <ViewCell>
-                                                <StackLayout>
-                                                    <Label Text="{Binding name}" 
-                                                           TextColor="Blue"/>
-                                                </StackLayout>
-                                            </ViewCell>
+                                            <TextCell Detail="{Binding name}"/>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
+                                    
+                                    <ListView.Footer>
+                                        <Button Text="Load more"
+                                                Clicked="Btn_Click_Show_Team"
+                                                BackgroundColor="Transparent"/>
+                                    </ListView.Footer>
                                 </ListView>
-                                
-                                
-                                <Button Text="View more"
-                                        
+
+
+                                <!--<Button Text="View more"                                 
                                         Clicked="Btn_Click_Show_Team"
-                                        BackgroundColor="Transparent"/>
+                                        BackgroundColor="Transparent"/>-->
                             </StackLayout>
                         </StackLayout>
+
                     </ViewCell>
                 </DataTemplate>
+                    
             </ListView.ItemTemplate>
+            
+            <ListView.Footer>
+                <Button Text="Load more"
+                        Clicked="Btn_Click_Load"/>
+
+            </ListView.Footer>
         </ListView>
 
-        <StackLayout>
+        <!--<StackLayout>
             <Button Clicked="Btn_Click_Load" Text="Load More"/>
-        </StackLayout>
+        </StackLayout>-->
 
     </StackLayout>
     
